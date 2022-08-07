@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+.container {
+	max-height: 100vh;
+	overflow-y: scroll;
+	border: 1px solid gray;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(3rem);
+	scroll-snap-type: y mandatory;
+}
+li {
+	border-bottom: 1px solid white;
+	padding: 1rem;
+	font-size: 1.2rem;
+	color: white;
+    text-shadow: 0 0 5px black;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	scroll-snap-align: start;
+}
