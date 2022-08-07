@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+  }
+  
+  main {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px;
+  }
+  
+  section {
+    transform-style: preserve-3d;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  .parallax::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(-1px) scale(1.51);
+    background-size: 100%;
+    z-index: -1;
+  }
+  .bg::after {
+/*    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://picsum.photos/1920/1080'); */
+    background: url('https://picsum.photos/1920/1080');
+    background-size: cover;
+  }
+  .no-parallax {
+    background-color: #111;
+    z-index: 999;
+  }
+  
+  section h1 {
+    text-align: center;
+    font-size: 4rem;
+    font-family: sans-serif;
+  }
+  
+  .parallax h1 {
+    width: 60%;
+    text-shadow: 0 0 5px black;
+    font-size: 2rem;
+  }
