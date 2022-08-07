@@ -31,8 +31,14 @@ body {
   }
   .bg::after {
 /*    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://picsum.photos/1920/1080'); */
-    background: url('https://picsum.photos/1920/1080');
+ /*   background: url('https://picsum.photos/1920/1080'); */
     background-size: cover;
+  }
+  .bg-1::after {
+    background: url('./images/1.jpg');
+  }
+  .bg-2::after {
+      background: url('./images/2.jpg');
   }
   .no-parallax {
     background-color: #111;
