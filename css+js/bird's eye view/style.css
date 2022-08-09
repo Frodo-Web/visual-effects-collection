@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --scale: 1.5;
+    --y: 0;
+    overflow: hidden;
+}
+body {
+    margin: 0;
+    background-color: black;
+    outline: none;
+    border: none;
+  }
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+}
+#image {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./images/AndryBenz.avif");
+    background-size: cover;
+    transform: translateX(var(--x)) translateY(var(--y)) scale(var(--scale));
+    transition: ease-out 0.7s;
+          
+}
+    
+  
+  
