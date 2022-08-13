@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .gallery {
+            --n: 1;
+            /* number of rows*/
+            --m: 5;
+            /* number of columns */
+            --g: 0px;
+            /* control the gap */
+            --f: .8;
+            /* control the scale factor */
+
+            display: grid;
+            gap: var(--g);
+            width: 100vw;
+            height: 100vh;
+            grid-template-columns: repeat(var(--m), auto);
+        }
+
+        .gallery>img {
+            width: 0;
+            height: 0;
+            min-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            filter: grayscale(80%);
+            transition: .35s linear;
+        }
+
+        .gallery img:hover {
+            filter: grayscale(0);
+            width: calc(100vh*var(--f)/var(--n));
+            height: calc(100vw*var(--f)/var(--m));
+        }
+
+
+        body {
+            margin: 0;
+            background: #60c4ff;
+        }
+    </style>
+    <div class="gallery">
+        <img src="https://picsum.photos/id/1028/800/600" alt="a forest after an apocalypse">
+        <img src="https://picsum.photos/id/15/800/600" alt="a waterfall and many rocks">
+        <img src="https://picsum.photos/id/1040/800/600" alt="a house on a mountain">
+        <img src="https://picsum.photos/id/106/800/600" alt="sime pink flowers">
+        <img src="https://picsum.photos/id/136/800/600" alt="big rocks with some trees">
+    </div>
+</body>
+
+</html>
