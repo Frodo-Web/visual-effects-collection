@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .units {
+            width: max-content;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            pointer-events: none;
+            padding: 0 10px;
+        }
+
+        /* original design */
+        .units>* {
+            font: bolder 5rem/5rem "EB Garamond";
+            background-image: url("image.jpeg");
+            -webkit-background-clip: text;
+            color: transparent;
+            overflow: hidden;
+        }
+
+        /* reflections */
+        .units> :last-child {
+            transform: rotatex(180deg) translatey(15px);
+        }
+
+        .units:first-of-type> :last-child {
+            --gradient: linear-gradient(transparent 50%, white 90%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+        }
+
+        .units:nth-of-type(2)> :last-child {
+            --gradient: repeating-linear-gradient(transparent,
+                    transparent 3px,
+                    white 3px,
+                    white 4px),
+                linear-gradient(transparent 50%, white 90%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+        }
+
+        .units:nth-of-type(3)> :last-child {
+            transform: rotatex(180deg) translatey(15px) skew(135deg) translatex(30px);
+            --gradient: linear-gradient(transparent 50%, white 90%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+        }
+
+        .units:nth-of-type(4)> :last-child {
+            filter: blur(10px) brightness(1.5);
+        }
+
+        .units:nth-of-type(5)> :last-child {
+            filter: blur(4px);
+            --gradient: linear-gradient(transparent 50%, white 90%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+        }
+
+        .units:nth-of-type(6)> :last-child {
+            --gradient: radial-gradient(circle at center, white, transparent 50%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+        }
+
+        .units:nth-of-type(7)> :last-child {
+            --gradient: linear-gradient(transparent 50%, white 90%);
+            -webkit-mask-image: var(--gradient);
+            mask-image: var(--gradient);
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.4), -2px -2px 6px rgba(0, 255, 0, 0.4),
+                2px 2px 4px rgba(0, 255, 255, 0.4);
+            background-image: unset;
+        }
+
+        .units:nth-of-type(8)> :last-child {
+            opacity: 0.2;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: max-content;
+            margin: auto;
+        }
+
+        @media (max-width: 480px) {
+            .units>* {
+                font: bolder 3.5rem/3.5rem "EB Garamond";
+            }
+
+            .units:nth-of-type(3)> :last-child {
+                transform: rotatex(180deg) translatey(15px) skew(135deg) translatex(18px);
+            }
+        }
+
+        /* this is a demo code only */
+    </style>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+    <div class=units>
+        <div>trinket</div>
+        <div>trinket</div>
+    </div>
+</body>
+
+</html>
