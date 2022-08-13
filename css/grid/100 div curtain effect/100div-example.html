@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: "Fira Mono", Consolas, monospace;
+            background: linear-gradient(135deg, lime, hotpink);
+        }
+
+        .curtain {
+            display: grid;
+            width: max(100vw, 100vh);
+            height: max(100vw, 100vh);
+
+            position: fixed;
+            left: min(0vw, calc((100vw - 100vh) / 2));
+            top: min(0vh, calc((100vh - 100vw) / 2));
+
+            grid-template-columns: repeat(auto-fill, max(10vw, 10vh));
+            grid-template-rows: repeat(auto-fill, max(10vw, 10vh));
+
+            counter-reset: box-index;
+
+            pointer-events: none;
+        }
+
+        .curtain>div::before {
+            counter-increment: box-index;
+            content: counter(box-index);
+        }
+
+        /* defaults */
+        .curtain>div {
+            --row: 1;
+            --col: 1;
+            --delay: 1s;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 1rem;
+            background: #000;
+            padding: 0.5rem;
+
+            transition: opacity var(--delay) linear calc((var(--delay) / 10 * var(--row)) + (var(--delay) / 10 * var(--col)));
+            opacity: 0;
+        }
+
+        /* cols */
+        .curtain>div:nth-child(10n-8) {
+            --col: 2;
+        }
+
+        .curtain>div:nth-child(10n-7) {
+            --col: 3;
+        }
+
+        .curtain>div:nth-child(10n-6) {
+            --col: 4;
+        }
+
+        .curtain>div:nth-child(10n-5) {
+            --col: 5;
+        }
+
+        .curtain>div:nth-child(10n-4) {
+            --col: 6;
+        }
+
+        .curtain>div:nth-child(10n-3) {
+            --col: 7;
+        }
+
+        .curtain>div:nth-child(10n-2) {
+            --col: 8;
+        }
+
+        .curtain>div:nth-child(10n-1) {
+            --col: 9;
+        }
+
+        .curtain>div:nth-child(10n) {
+            --col: 10;
+        }
+
+        /* rows */
+        .curtain>div:nth-child(n + 11) {
+            --row: 2;
+        }
+
+        .curtain>div:nth-child(n + 21) {
+            --row: 3;
+        }
+
+        .curtain>div:nth-child(n + 31) {
+            --row: 4;
+        }
+
+        .curtain>div:nth-child(n + 41) {
+            --row: 5;
+        }
+
+        .curtain>div:nth-child(n + 51) {
+            --row: 6;
+        }
+
+        .curtain>div:nth-child(n + 61) {
+            --row: 7;
+        }
+
+        .curtain>div:nth-child(n + 71) {
+            --row: 8;
+        }
+
+        .curtain>div:nth-child(n + 81) {
+            --row: 9;
+        }
+
+        .curtain>div:nth-child(n + 91) {
+            --row: 10;
+        }
+
+        label[for="toggle"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #toggle {
+            appearance: none;
+            visibility: hidden;
+        }
+
+        #toggle:checked+.curtain>div {
+            opacity: 1;
+        }
+    </style>
+
+
+    <label for="toggle">
+        Click for effect!
+    </label>
+
+    <input type="checkbox" id="toggle">
+
+    <section class="curtain">
+        <!-- one hundred divs -->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+</body>
+
+</html>
