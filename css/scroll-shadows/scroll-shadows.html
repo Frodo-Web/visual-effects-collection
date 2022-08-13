@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .scroll-shadows {
+            max-height: 200px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+
+            background:
+                /* Shadow Cover TOP */
+                linear-gradient(white 30%,
+                    rgba(255, 255, 255, 0)) center top,
+
+                /* Shadow Cover BOTTOM */
+                linear-gradient(rgba(255, 255, 255, 0),
+                    white 70%) center bottom,
+
+                /* Shadow TOP */
+                radial-gradient(farthest-side at 50% 0,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0)) center top,
+
+                /* Shadow BOTTOM */
+                radial-gradient(farthest-side at 50% 100%,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0)) center bottom;
+
+            background-repeat: no-repeat;
+            background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+            background-attachment: local, local, scroll, scroll;
+        }
+
+
+
+        /* Not important to the functionality, just for this particular demo */
+        .scroll-shadows {
+            list-style: none;
+            padding-right: 0.5rem;
+        }
+
+        .scroll-shadows>* {
+            padding: 0.2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            font: 500 100% system-ui, sans-serif;
+        }
+
+        .scroll-shadows {
+            --scrollbarBG: transparent;
+            --thumbBG: #90a4ae;
+
+            scrollbar-width: thin;
+            scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+        }
+
+        .scroll-shadows::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .scroll-shadows::-webkit-scrollbar-track {
+            background: var(--scrollbarBG);
+        }
+
+        .scroll-shadows::-webkit-scrollbar-thumb {
+            background-color: var(--thumbBG);
+            border-radius: 6px;
+            border: 3px solid var(--scrollbarBG);
+        }
+    </style>
+    <div>
+        <ul class="scroll-shadows">
+            <li>Lorem, ipsum.</li>
+            <li>Eligendi, repudiandae.</li>
+            <li>Dolor, vel.</li>
+            <li>Obcaecati, praesentium.</li>
+            <li>Impedit, tenetur.</li>
+            <li>Exercitationem, repellat!</li>
+            <li>Aut, asperiores!</li>
+            <li>Dolor, fuga.</li>
+            <li>Ab, aliquid!</li>
+            <li>Adipisci, totam.</li>
+            <li>Error, dicta.</li>
+            <li>Saepe, vero?</li>
+            <li>Eveniet, dolorem!</li>
+            <li>Id, tempora!</li>
+            <li>Voluptate, consectetur?</li>
+            <li>Voluptatibus, omnis.</li>
+            <li>Eius, fugit.</li>
+            <li>Quia, non!</li>
+            <li>At, laudantium?</li>
+            <li>Commodi, maiores!</li>
+        </ul>
+    </div>
+    <script>
+        // just so demo loads scrolled down a little.
+        document.querySelector(".scroll-shadows").scrollTop = 100;
+    </script>
+</body>
+
+</html>
