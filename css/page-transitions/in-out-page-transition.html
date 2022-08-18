@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .slide-in {
+            animation: slide-in 1.75s ease infinite;
+        }
+
+        .slide-out {
+            animation: slide-out 1.75s ease infinite;
+        }
+
+        @keyframes slide-out {
+            0% {
+                transform: translate(-120%);
+            }
+
+            25% {
+                transform: translate(-120%) scale(0.8);
+            }
+
+            75% {
+                transform: scale(0.8);
+                transition-timing-function: ease-out;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slide-in {
+            25% {
+                transform: scale(0.8);
+            }
+
+            75% {
+                transform: translate(120%) scale(0.8);
+                transition-timing-function: ease-out;
+            }
+
+            100% {
+                transform: translate(120%) scale(1);
+            }
+        }
+
+
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: gray;
+        }
+    </style>
+    <div class="slide-out"></div>
+    <div class="slide-in"></div>
+</body>
+
+</html>
