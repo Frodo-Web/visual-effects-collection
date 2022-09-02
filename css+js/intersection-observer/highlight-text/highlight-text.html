@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap");
+
+        :root {
+            --bg-color-hsl: 59, 3%, 94%;
+            --bg-color: hsl(var(--bg-color-hsl));
+            --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
+            --bg-color-highlight: hsl(60, 90%, 50%);
+            --color-text: hsl(192, 14%, 20%);
+            --color-text-highlight: hsl(192, 14%, 0%);
+            --page-width: 80ch;
+            --paragraph-font-size: min(max(1.2rem, 4vw), 1.4rem);
+            --header-font-size: min(max(2rem, 8vw), 4rem);
+            --space: 2rem;
+            --padding: 8vmin;
+            --duration: 1s;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .dark-mode {
+            --bg-color-hsl: 0, 0%, 7%;
+            --bg-color: hsl(var(--bg-color-hsl));
+            --bg-color-translucent: hsla(var(--bg-color-hsl), 0.95);
+            --bg-color-highlight: hsl(238, 70%, 40%);
+            --color-text: hsl(0, 0%, 80%);
+            --color-text-highlight: hsl(0, 0%, 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Lora", sans-serif;
+            font-weight: 400;
+            color: var(--color-text);
+            background-color: var(--bg-color);
+            transition: background calc(var(--duration) / 4) var(--ease);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            padding: calc(var(--space) / 2) var(--padding);
+            width: 100%;
+            max-width: var(--page-width);
+            background-color: var(--bg-color-translucent);
+            transition: background calc(var(--duration) / 4) var(--ease);
+        }
+
+        header .wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        header .wrapper>*+* {
+            margin-left: 4px;
+        }
+
+        select {
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        label {
+            font-size: 0.8rem;
+        }
+
+        main {
+            margin: 12rem auto;
+            padding: 0 var(--padding);
+            max-width: var(--page-width);
+        }
+
+        h1 {
+            font-size: var(--header-font-size);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4rem;
+        }
+
+        p {
+            margin: 2rem 0;
+            font-size: var(--paragraph-font-size);
+            line-height: 1.7;
+        }
+
+        .text-highlight {
+            all: unset;
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+            transition: color calc(var(--duration) / 4) var(--ease), background-color calc(var(--duration) / 4) var(--ease), background-size var(--duration) var(--ease);
+        }
+
+        .text-highlight.active {
+            color: var(--color-text-highlight);
+            background-size: 100% 100%;
+        }
+
+        [data-highlight=background] .text-highlight {
+            background-image: linear-gradient(var(--bg-color-highlight), var(--bg-color-highlight));
+        }
+
+        [data-highlight=half] .text-highlight {
+            --line-size: 0.5em;
+            background-image: linear-gradient(transparent calc(100% - var(--line-size)), var(--bg-color-highlight) var(--line-size));
+        }
+
+        [data-highlight=underline] .text-highlight {
+            --line-size: 0.15em;
+            background-image: linear-gradient(transparent calc(100% - var(--line-size)), var(--color-text) var(--line-size));
+        }
+
+        .text-highlight::before,
+        .text-highlight::after {
+            position: absolute;
+            clip-path: inset(100%);
+            clip: rect(1px, 1px, 1px, 1px);
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .text-highlight::before {
+            content: " [highlight start] ";
+        }
+
+        .text-highlight::after {
+            content: " [highlight end] ";
+        }
+    </style>
+    <header>
+        <div class="wrapper">
+            <label>Style:</label>
+            <select id="highlight-style">
+                <option>background</option>
+                <option>half</option>
+                <option>underline</option>
+            </select>
+        </div>
+        <div class="wrapper">
+            <input type="checkbox" id="mode" />
+            <label for="mode">Dark Mode</label>
+        </div>
+    </header>
+
+    <main>
+        <h1>The Carbon in Our Apple Pies</h1>
+        <p>Galaxies ship of the imagination across the centuries at the edge of forever take root and flourish billions
+            upon billions. Stirred by starlight how far away not a sunrise but a galaxyrise Sea of Tranquility concept
+            of the number one dispassionate extraterrestrial observer. The carbon in our apple pies emerged into
+            consciousness Sea of Tranquility something incredible is waiting to be known made in the interiors of
+            collapsing stars inconspicuous motes of rock and gas.</p>
+
+        <p>Great turbulent clouds something incredible is waiting to be known Jean-Fran&ccedil;ois Champollion hundreds
+            of thousands science hearts of the stars. <mark class="text-highlight">Bits of moving fluff</mark> another
+            world brain is the seed of intelligence how far away bits of moving fluff realm of the galaxies? Cosmic
+            fugue a still more glorious dawn awaits rings of Uranus dream of the mind's eye not a sunrise but a
+            galaxyrise the only home we've ever known.</p>
+
+        <p>Quasar intelligent beings cosmic ocean realm of the galaxies Jean-Fran&ccedil;ois Champollion descended from
+            astronomers? <mark class="text-highlight">Flatland prime number concept of the number one Euclid the carbon
+                in our apple pies bits of moving fluff</mark>. Star stuff harvesting star light inconspicuous motes of
+            rock and gas the ash of stellar alchemy encyclopaedia galactica bits of moving fluff the only home we've
+            ever known. Made in the interiors of collapsing stars the ash of stellar alchemy made in the interiors of
+            collapsing stars not a sunrise but a galaxyrise made in the interiors of collapsing stars something
+            incredible is waiting to be known.</p>
+
+        <p>Permanence of the stars billions upon billions tingling of the spine culture realm of the galaxies corpus
+            callosum. Hydrogen atoms rich in mystery vastness is bearable only through love prime number paroxysm of
+            global death another world. Encyclopaedia galactica emerged into consciousness the sky calls to us at the
+            edge of forever across the centuries emerged into consciousness. <mark class="text-highlight">At the edge of
+                forever descended from astronomers vanquish the impossible descended from astronomers another world
+                invent the universe</mark>.</p>
+
+        <p>Galaxies Hypatia trillion radio telescope paroxysm of global death emerged into consciousness. Vanquish the
+            impossible Orion's sword hearts of the stars muse about are creatures of the cosmos made in the interiors of
+            collapsing stars? Made in the interiors of collapsing stars two ghostly white figures in coveralls and
+            helmets are softly dancing dream of the mind's eye Apollonius of Perga <mark
+                class="text-highlight">inconspicuous motes of rock and gas</mark> Apollonius of Perga?</p>
+
+        <p>Not a sunrise but a galaxyrise a very small stage in a vast cosmic arena preserve and cherish that pale blue
+            dot consciousness shores of the cosmic ocean decipherment? Of brilliant syntheses rich in mystery something
+            incredible is waiting to be known colonies rings of Uranus hundreds of thousands? <mark
+                class="text-highlight">From which we spring of brilliant syntheses extraordinary claims require
+                extraordinary evidence Orion's sword Sea of Tranquility descended from astronomers</mark>.</p>
+
+        <p>Cosmos of brilliant syntheses Rig Veda rings of Uranus explorations rich in heavy atoms. Shores of the cosmic
+            ocean extraordinary claims require extraordinary evidence made <mark class="text-highlight">in the interiors
+                of collapsing stars the carbon in our apple pies paroxysm</mark> of global death realm of the galaxies?
+            Hundreds of thousands globular star cluster across the centuries a mote of dust suspended in a sunbeam
+            globular star cluster made in the interiors of collapsing stars.</p>
+
+        <p>Tunguska event Hypatia dispassionate extraterrestrial observer colonies preserve and cherish that pale blue
+            dot as a patch of light. A still more glorious dawn awaits the only home we've ever known globular star
+            cluster invent the universe <mark class="text-highlight">Cambrian explosion Flatland</mark>. Vastness is
+            bearable only through love invent the universe dream of the mind's eye kindling the energy hidden in matter
+            gathered by gravity inconspicuous motes of rock and gas.</p>
+
+        <p>Intelligent beings something incredible is waiting to be known extraordinary claims require extraordinary
+            evidence a very small stage in a vast cosmic arena realm of the galaxies hundreds of thousands. <mark
+                class="text-highlight">Vanquish the impossible astonishment</mark>. Tunguska event invent the universe a
+            still more glorious dawn awaits at the edge of forever? Across the centuries vanquish the impossible bits of
+            moving fluff prime number great turbulent clouds courage of our questions?</p>
+
+        <p>Finite but unbounded circumnavigated of brilliant syntheses the carbon in our apple pies trillion cosmic
+            ocean? Light years how far away vanquish the impossible another world concept of the number one Euclid.
+            Emerged into consciousness white dwarf citizens of distant epochs Sea of Tranquility great turbulent <mark
+                class="text-highlight">clouds invent the universe</mark>. Courage of our questions courage of our
+            questions two ghostly white figures in coveralls and helmets are softly dancing bits of moving fluff
+            kindling the energy hidden in matter Sea of Tranquility and billions upon billions upon billions upon
+            billions upon billions upon billions upon billions.</p>
+    </main>
+    <script>
+        const highlight = document.getElementById("highlight-style");
+        const mode = document.getElementById("mode");
+        const setHighlightStyle = (value) => document.body.setAttribute("data-highlight", value);
+
+        mode.addEventListener("click", (e) =>
+            document.body.classList.toggle("dark-mode")
+        );
+
+        highlight.addEventListener("change", (e) => setHighlightStyle(e.target.value));
+
+        setHighlightStyle(highlight.value);
+
+        const hightlights = [...document.querySelectorAll("mark.text-highlight")];
+
+        let options = {
+            rootMargin: "0px",
+            threshold: 1.00
+        };
+        const callback = (entries, observer) => {
+            entries.forEach(entry => {
+                const { target } = entry;
+
+                if (entry.intersectionRatio >= 1.00) {
+                    target.classList.add("active");
+                    observer.unobserve(target);
+                } 
+            });
+        };
+        const observer = new IntersectionObserver(callback, options);
+
+        hightlights.forEach((highlight) => {
+            observer.observe(highlight);
+        });
+    </script>
+</body>
+
+</html>
