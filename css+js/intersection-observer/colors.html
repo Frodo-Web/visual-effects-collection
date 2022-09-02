@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body,
+        html {
+            background: #212121;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 1000vw;
+            height: 1000vh;
+        }
+
+        .test {
+            flex: 0 0 10vw;
+            height: 10vh;
+            background: gold;
+            transition: 500ms background-color;
+            margin: 0;
+            will-change: background-color;
+        }
+
+        .test.is-visible {
+            background: hotpink;
+        }
+
+        .scroll {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .scroll a {
+            display: block;
+            text-transform: lowercase;
+            font-size: 0.5em;
+            color: #fff;
+            font-weight: normal;
+        }
+    </style>
+
+    <div class="container">
+        <h1 class="scroll">
+            Scroll
+            <a href="http://caniuse.com/#search=intersection" target="_blank">
+                IntersectionObserver
+            </a>
+        </h1>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        for (let i=0; i<10000; i++) {
+            const elem = document.createElement('div');
+            elem.classList.add('test');
+            container.appendChild(elem);
+        }
+        const elements = Array.from(document.querySelectorAll('.test'));
+        const observer = new IntersectionObserver(onChange, {
+            root: document.documentElement.body, //scollable element, is Body if not specified
+            rootMargin: '0px', // grows or shrinks the intersection boundingbox of the root
+            threshold: buildThresholdList(parseFloat(elements.length, 2))
+        });
+
+        function buildThresholdList(steps) {
+            let thresholds = [];
+
+            thresholds.push(0);
+
+            for (let i = 1.0; i <= steps; i++) {
+                const ratio = i / steps;
+                thresholds.push(ratio);
+            }
+
+            return thresholds;
+        }
+
+        function onChange(changes) {
+            changes.forEach(change => {
+                const $target = change.target;
+                if (change.isIntersecting) {
+                    $target.classList.add('is-visible');
+                } else {
+                    $target.classList.remove('is-visible');
+                }
+            })
+        }
+
+        elements.forEach(element => observer.observe(element));
+    </script>
+</body>
+
+</html>
