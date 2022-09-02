@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            --translate-value: -40;
+        }
+
+        html {
+            box-sizing: border-box;
+            cursor: default;
+        }
+
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: inherit;
+        }
+
+        body {
+            background-color: #f6f8f9;
+            color: #3d3d3d;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        .header {
+            height: 200%;
+            background-image: url("https://i.postimg.cc/MTfZFb4d/img-1-compressor.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-color: #0a5ea2;
+            background-blend-mode: multiply;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            transform: translateY(calc(var(--translate-value) * 1%));
+            will-change: auto;
+            transition: 0.5s cubic-bezier(0.22, 0.44, 0, 1);
+        }
+
+        .header-inner {
+            position: fixed;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateY(calc(var(--translate-value-header) * 1%));
+            will-change: auto;
+            transition: 0.8s cubic-bezier(0.22, 0.44, 0, 1);
+        }
+
+        .header-title {
+            text-align: center;
+            font-family: "Roboto Condensed";
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 6vw;
+            margin-bottom: 30px;
+            letter-spacing: 0.2rem;
+        }
+
+        .header-subtitle {
+            text-align: center;
+            font-family: "Playfair Display";
+            font-weight: 400;
+            -webkit-text-stroke: 0.015rem;
+            letter-spacing: 0.03rem;
+            font-size: 1.5rem;
+        }
+
+        .main {
+            margin-top: 101vh;
+            padding: 120px 200px;
+            background-color: #fefff4;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-content {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: 1.5s cubic-bezier(0.22, 0.44, 0, 1);
+        }
+
+        .main-content-side {
+            flex-grow: 1;
+            flex-basis: 0;
+            text-transform: uppercase;
+            font-family: "Roboto Condensed";
+            font-weight: 700;
+            color: #0a5ea2;
+            letter-spacing: 0.15rem;
+            font-size: 0.92rem;
+            margin-top: 12px;
+            margin-right: 40px;
+        }
+
+        .main-content-side img {
+            max-width: 100%;
+            margin-top: 40px;
+            transition: 1.5s cubic-bezier(0.22, 0.44, 0, 1) 0.4s;
+        }
+
+        .main-content-side:before {
+            content: "";
+            height: 2px;
+            width: 30px;
+            background-color: #0a5ea2;
+            display: inline-block;
+            vertical-align: middle;
+            transform: translateY(-2px);
+            margin-right: 10px;
+        }
+
+        .main-content-text {
+            flex-grow: 2;
+            flex-basis: 0;
+            font-family: "Playfair Display";
+            line-height: 1.5;
+            -webkit-text-stroke: 0.015rem;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-left: 40px;
+        }
+
+        .main-content-text-callout {
+            font-weight: 700;
+            margin-bottom: 60px;
+            font-size: 1.5rem;
+        }
+
+        .main-content-text-col {
+            column-count: 2;
+            column-gap: 40px;
+        }
+
+        .toggle-class {
+            opacity: 0;
+            transform: translateY(120px);
+        }
+    </style>
+    <header class="header">
+    </header>
+    <div class="header-inner">
+        <h1 class="header-title">Intersection Observer</h1>
+        <h2 class="header-subtitle">The <em>intersectionRatio</em> retrieved from the Intersection Observer sets CSS
+            vars to create the scroll effect.</h2>
+    </div>
+    <main class="main">
+        <div class="main-content toggle-class">
+            <div class="main-content-side">
+                <span>Aenean finibus dapibus</span>
+                <img class="toggle-class"
+                    src="https://image.ibb.co/nRnqPU/adventure-altitude-austria-1008180-1539536183-85-171-133-3.jpg" />
+            </div>
+            <div class="main-content-text">
+                <p class="main-content-text-callout">After checking if an entry <em>isIntersecting</em>, it's possible
+                    to toggle the removal of a class to animate the entry of an element into the viewport on scroll. To
+                    prevent the animation from being triggered again, it's necessary to <em>unobserve</em> the entry.
+                </p>
+                <div class="main-content-text-col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus at arcu ultrices sollicitudin.
+                        Aenean finibus dapibus mollis. Nam eget vehicula urna. Quisque rutrum suscipit massa, sit amet
+                        sollicitudin nisi feugiat quis. Suspendisse lorem magna, venenatis ut rutrum vitae, iaculis at
+                        lectus. Donec bibendum odio ac enim mattis, eget volutpat tortor malesuada. Aenean viverra
+                        molestie turpis, at tempus ligula fermentum ac. Nunc consequat, dui sed dapibus convallis, nisi
+                        enim tempor sem, finibus dignissim nunc ex ut urna. Ut a erat at tortor sodales sagittis id eget
+                        est. Nam id ornare elit. Mauris interdum in mi non consequat. Ut in sapien a velit malesuada
+                        gravida in quis augue. Integer luctus ut nunc sed tristique. Mauris diam quam, bibendum id purus
+                        a, consequat pulvinar nisi. Morbi odio diam, ullamcorper ut erat ullamcorper, blandit facilisis
+                        mi. Maecenas a nulla vel erat commodo congue.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const docStyle = document.documentElement.style;
+        const threshold = [...Array(100).keys()].map(i => i / 100);
+
+        const itemsObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.documentElement.style.setProperty(
+                            "--translate-value",
+                            Math.round(-(1 - entry.intersectionRatio) * 40)
+                        );
+                        document.documentElement.style.setProperty(
+                            "--translate-value-header",
+                            Math.round(-(entry.intersectionRatio * 90))
+                        );
+                    }
+                });
+            },
+            { threshold: threshold }
+        );
+
+        const itemsObserverSecondary = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                        entry.target.classList.remove("toggle-class");
+                        itemsObserverSecondary.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: threshold }
+        );
+
+        itemsObserver.observe(document.querySelector(".main"));
+        const toggles = [...document.querySelectorAll(".toggle-class")];
+        toggles.forEach(toggle => {
+            itemsObserverSecondary.observe(toggle);
+        })
+
+    </script>
+</body>
+
+</html>
