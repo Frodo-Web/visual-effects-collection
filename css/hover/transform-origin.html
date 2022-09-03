@@ -76,12 +76,21 @@
         h1.fourth:hover::before {
             transform-origin: bottom left;
         }
+        h1.fifth::before {
+            transform-origin: bottom right;
+            transition: transform .3s ease-in-out;
+        }
+
+        h1.fifth:hover::before {
+            transform-origin: center center;
+        }
 
     </style>
-    <h1>Hover Me</h1>
-    <h1 class="second">Hover Me</h1>
-    <h1 class="third">Hover Me</h1>
-    <h1 class="fourth">Hover Me</h1>
+    <h1>First example</h1>
+    <h1 class="second">Second example</h1>
+    <h1 class="third">Third example</h1>
+    <h1 class="fourth">Fourth example</h1>
+    <h1 class="fifth">Fifth example</h1>
 </body>
 
 </html>
