@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            --bar-color1: #1fe576;
+            --bar-color2: #d7e5de;
+            --bar-width: 200px;
+            --bar-height: 20px;
+            --anim-duration: 3s;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+            background-color: #0b0e0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .progress-bar {
+            position: relative;
+            width: var(--bar-width);
+            height: var(--bar-height);
+            border-radius: calc(var(--bar-height) / 2);
+            overflow: hidden;
+            background-color: var(--bar-color2);
+        }
+
+        .progress-bar::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: scaleX(0);
+            transform-origin: left center;
+            background-color: var(--bar-color1);
+            animation: var(--anim-duration) progress ease-out forwards;
+        }
+
+        @keyframes progress {
+            to {
+                transform: scaleX(1);
+            }
+        }
+    </style>
+    <div class="progress-bar"></div>
+</body>
+
+</html>
