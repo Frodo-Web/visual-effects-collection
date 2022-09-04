@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:300,700");
+
+        body {
+            font-family: "IBM Plex Sans Condensed", sans-serif;
+            font-size: 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .extra-content {
+            margin-top: 0;
+            align-self: start;
+        }
+
+        button {
+            padding: 0.5em 2em;
+            border: 0.2em solid black;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 3em;
+            color: black;
+            transition: color 250ms, background 250ms;
+        }
+
+        button:hover {
+            background: black;
+            color: #fff;
+        }
+
+        .box {
+            background: white;
+            padding: 2.5em;
+            position: relative;
+            box-shadow: 0 0.25em 2em -2em black, inset 0 0 0 0.5em #0496FF, inset 0 0 0 1em #D81159, inset 0 0 0 1.5em #FFBC42;
+        }
+
+        .box::before,
+        .box::after {
+            content: "";
+            position: absolute;
+            top: 80%;
+            bottom: 0.6em;
+            z-index: -1;
+            box-shadow: 0 0.5em 0.5em 0em rgba(0, 0, 0, 0.5);
+        }
+
+        .box::before {
+            left: 0.25em;
+            right: 2em;
+            background: pink;
+            transform: rotate(-3deg);
+        }
+
+        .box::after {
+            right: 0.25em;
+            left: 2em;
+            background: lightblue;
+            transform: rotate(3deg);
+        }
+
+        .modal {
+            position: absolute;
+            width: 70vw;
+            height: 70vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            z-index: -1;
+            box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.4);
+        }
+
+        .is-open {
+            opacity: 1;
+            z-index: 10;
+        }
+    </style>
+    <div class="box">
+        <h1>3 box-shadow hacks</h1>
+        <button>click me</button>
+    </div>
+    <!-- <p class="extra-content">some more content could be here!</p> -->
+
+    <div class="modal">
+        <p>Hello there!</p>
+    </div>
+    <script>
+        const modal = document.querySelector('.modal')
+        const modalToggle = document.querySelector('button')
+
+        modalToggle.addEventListener('click', _ => {
+            modal.classList.add('is-open')
+        })
+
+        modal.addEventListener('click', _ => {
+            modal.classList.remove('is-open')
+        })
+    </script>
+</body>
+
+</html>
