@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            font-family: Arial, sans-serif;
+        }
+
+        .t {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 100;
+            text-transform: uppercase;
+            --t: 2.5s;
+            --r: 8.5rem;
+        }
+
+        .t i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(calc(var(--i) * 360deg)) translateY(calc(-1 * var(--r))) rotate(calc(var(--i) * -360deg));
+        }
+
+        .t b {
+            display: block;
+            animation: show var(--t) infinite forwards ease-in-out;
+            animation-delay: calc(-1 * var(--t) * (1 - var(--i)));
+        }
+
+        @keyframes show {
+            0% {
+                font-weight: 100;
+                opacity: 0;
+            }
+
+            20% {
+                font-weight: 900;
+                opacity: 1;
+            }
+
+            90% {
+                font-weight: 200;
+                opacity: 1;
+            }
+
+            100% {
+                font-weight: 100;
+                opacity: 0;
+                transform: translateY(500%) scale(0.5);
+            }
+        }
+    </style>
+    <div class="t" data-circletext="loading gnidaol gnidaol "></div>
+    <script>
+        const $el = document.querySelector('[data-circletext]');
+        const text = $el.dataset.circletext;
+        const chars = text.split('');
+        const length = chars.length;
+        const html = chars.map((char, i) => `<i style="--i: ${i / length}"><b>${char}</b></i>`).join('');
+        $el.innerHTML = html;
+    </script>
+</body>
+
+</html>
