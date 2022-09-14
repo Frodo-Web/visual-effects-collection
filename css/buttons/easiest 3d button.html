@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Emilys+Candy&family=Oswald&family=Source+Sans+Pro&display=swap');
+
+        body {
+            background-color: black;
+        }
+
+        .button {
+            border: none;
+            padding: 0;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background: hsl(253, 98%, 77%);
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .top {
+            display: block;
+            padding: 15px 45px;
+            border-radius: 15px;
+            font-size: 2rem;
+            background: hsl(278deg 980% 77%);
+            color: white;
+            transition: transform 0.075s ease-out;
+            transform: translateY(-8px);
+        }
+
+        .button:active .top {
+            transform: translateY(-2px);
+        }
+    </style>
+    <button class="button">
+        <span class="top">
+            Press me
+        </span>
+    </button>
+</body>
+
+</html>
